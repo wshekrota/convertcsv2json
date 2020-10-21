@@ -26,7 +26,7 @@ wshek@pop-os:~/go/src/src/github.com/wshekrota/convertcsv2json$ ./convertcsv2jso
 ```
 <nil>    (return code from unmarshal)
 [map[a:1 b:2 c:3] map[a:4 b:5 c:6] map[a:7 b:8 c:9]]  (buffer returned on unmarshal)
-0 => map[a:1 b:2 c:3]  (ranging through interface returned from cvtc2j())
+0 => map[a:1 b:2 c:3]  (ranging through interface returned from unmarshal)
 1 => map[a:4 b:5 c:6]
 2 => map[a:7 b:8 c:9]
 ```
