@@ -5,9 +5,10 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"encoding/json"
 )
 
-func cvtc2j(list []string) string {
+func cvtc2j(list []string) []byte {
 
 	first := true
 	words := []string{}
@@ -23,7 +24,7 @@ func cvtc2j(list []string) string {
 		each := strings.Split(list[r], ",")
 		elen := len(each)
 		for i := 0; i < elen; i++ {
-			result += fmt.Sprintf("%s:%s", words[i], each[i])
+			result += fmt.Sprintf("%q:%s", words[i], each[i])
 			if i<elen-1 {
 			result += ","
 			}
@@ -35,8 +36,9 @@ func cvtc2j(list []string) string {
 			result += "]"
 		}
 	}
-	return string(result)
+	return []byte(result)
 }
+
 
 func main() {
 
@@ -54,7 +56,15 @@ func main() {
 	for scanner.Scan() {
 		dat = append(dat, scanner.Text())
 	}
-
 	file.Close()
-	fmt.Println(cvtc2j(dat))
+
+    var buf interface{}
+    // decode
+    fmt.Println(json.Unmarshal(cvtc2j(dat),&buf))
+    fmt.Println(buf)
+    // interface contains []map[string]int but cannot index an interface
+    z := buf.([]interface {})
+    for i,j := range z {
+        fmt.Println(i,"=>",j)
+    }
 }
