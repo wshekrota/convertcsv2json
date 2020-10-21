@@ -10,9 +10,10 @@ a, b, c
 
 Will become..
 [{"a":1,"b":2,"c":3},
-{"a":4,"b":5 etc ]
+{"a":4,"b":5 etc} .. ]
 
-This is a suitable string for decode or unmarshall. Decoded being an array of hash the column
-name can be maintained as you loop through the array processing the data elements. Using a
-struct to do this is less flexible and static. By reading the header names and maps we make 
-the process dynamic.
+This is a suitable string for decode or unmarshal. Decoded being an array of hash the column
+name can be maintained as you loop through the array processing the map data elements. Using a
+struct to do this is less flexible and static. By mapping the column headers to data for each 
+row we make it instantly addressable using a key and line number. This is a more dynamic 
+process
