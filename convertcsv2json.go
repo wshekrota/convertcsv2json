@@ -8,6 +8,15 @@ import (
 	"encoding/json"
 )
 
+/*
+	Function: input the text from a csv file and return it as a json string
+	This output will be valid json that can be decoded
+	requirements:
+		csv has a column header line
+		it does not use special characters(they will be excluded)
+		marshal take []byte as input so this outputs byte
+*/
+
 func cvtc2j(list []string) []byte {
 
 	first := true
@@ -40,10 +49,12 @@ func cvtc2j(list []string) []byte {
 }
 
 
+// Example code
 func main() {
 
 // prereq input for cvtc2j is []string from a file
 // so this requires you to read it line by line not as byte
+// READFILE
 
 	var dat = []string{}
 	file, err := os.Open("./test.csv")
@@ -58,13 +69,18 @@ func main() {
 	}
 	file.Close()
 
+    
     var buf interface{}
-    // decode
-    fmt.Println(json.Unmarshal(cvtc2j(dat),&buf))
-    fmt.Println(buf)
+
+    // decode .. here is the beef call to cvtc2j gets decoded
+    j := cvtc2j(dat)
+//    fmt.Println(string(j))
+    fmt.Println(json.Unmarshal(j,&buf))
+//    fmt.Println(buf)
     // interface contains []map[string]int but cannot index an interface
     z := buf.([]interface {})
-    for i,j := range z {
-        fmt.Println(i,"=>",j)
-    }
+    fmt.Println(z[3]) // show map at 4th index or range aas below
+//    for i,j := range z {
+//        fmt.Println(i,"=>",j)
+//    } 
 }
