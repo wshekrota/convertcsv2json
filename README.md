@@ -18,9 +18,8 @@ name can be maintained as you loop through the array processing the map data ele
 struct to do this is less flexible and static. By mapping the column headers to data for each 
 row we make it instantly addressable using a key and line number. This is a more dynamic 
 process.
-To consume this interface you probably know you cannot just index it you must range over it or 
+Returned is a byte array of serialization or json. After decode you must range over it or 
 convert it to a slice of the types in question.
-Remember what is returning is a byte array, a serial string of json which needs decode.
 
 example output:
 wshek@pop-os:~/go/src/src/github.com/wshekrota/convertcsv2json$ ./convertcsv2json 
