@@ -74,9 +74,9 @@ func main() {
 
     // decode .. here is the beef call to cvtc2j gets decoded
     j := cvtc2j(dat)
-//    fmt.Println(string(j))
+
     fmt.Println(json.Unmarshal(j,&buf))
-//    fmt.Println(buf)
+
     // interface contains []map[string]int but cannot index an interface
     z := buf.([]interface {})
     fmt.Println(z[3]) // show map at 4th index or range aas below
