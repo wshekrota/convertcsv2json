@@ -31,3 +31,6 @@ wshek@pop-os:~/go/src/src/github.com/wshekrota/convertcsv2json$ ./convertcsv2jso
 2 => map[a:7 b:8 c:9]
 ```
 Remember cvtc2j returns a string of json.. that string is then decoded to internal.
+
+json2csv 
+Will reverse this process converting a qualifying json to a tabular csv format.
